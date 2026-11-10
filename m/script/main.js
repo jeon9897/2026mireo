@@ -163,13 +163,13 @@ tab_list.forEach((tab, i)=>{
 
     //3번 탭메뉴 클릭시 부모박스의 높이(900)가 변해야 함.
     if(i==2){
-      tcon[i].parentElement.parentElement.parentElement.parentElement.style.height='900px';
-      tcon[i].parentElement.parentElement.parentElement.style.height='900px';
+      tcon[i].parentElement.parentElement.parentElement.parentElement.style.height='800px';
+      tcon[i].parentElement.parentElement.parentElement.style.height='800px';
       //배경 이미지 위치 변경하기
       tab_backIMg.style.backgroundPosition='bottom';
     }else{
-      tcon[i].parentElement.parentElement.parentElement.parentElement.style.height='600px';
-      tcon[i].parentElement.parentElement.parentElement.style.height='600px';
+      tcon[i].parentElement.parentElement.parentElement.parentElement.style.height='660px';
+      tcon[i].parentElement.parentElement.parentElement.style.height='660px';
       //배경 이미지 위치 변경하기
       tab_backIMg.style.backgroundPosition='bottom';
     }
@@ -192,51 +192,80 @@ sw.style.width = fig*s_total+'%'; //300
 console.log(sw.style.width); //300나오는지 확인
 
 //좌측 버튼 클릭시 시간제거하고, 슬라이드 왼쪽으로 이동하기
+/*
+  좌우 버튼의 mouseleave 이벤트에서 clearInterval(Timer2) 없이 새로운 setInterval을 바로 생성하고 있습니다. 사용자가 버튼에 마우스를 여러 번 올렸다 내리면 타이머가 여러 개 동시에 돌아가서 슬라이드가 미친 듯이 빨라지는 현상이 발생합니다. 실행 전 반드시 기존 타이머를 지워주어야 합니다.
+*/
 e_lbtn.addEventListener('click', ()=>{
   //alert('클릭 이벤트 확인');
   clearInterval(Timer2); 
 
+  // if(cont>0){ //만약에 cont값이 0보다 크면
+  //   mslide(cont-1);  //1씩 감소
+  // }else{  //그렇지 않으면 
+  //   mslide(s_total-1); //0으로 나오게 함.
+  // }
+  moveLeft();
+});
+
+//왼쪽으로 이동되는 슬라이드 함수
+function moveLeft(){
   if(cont>0){ //만약에 cont값이 0보다 크면
     mslide(cont-1);  //1씩 감소
   }else{  //그렇지 않으면 
     mslide(s_total-1); //0으로 나오게 함.
   }
-});
+};
+
 
 //우측 버튼 클릭시 시간제거하고, 슬라이드 오른쪽으로 이동하기
 e_rbtn.addEventListener('click', ()=>{
   //alert('클릭 이벤트 확인');
   clearInterval(Timer2);
 
+  // if(cont<s_total-1){ //만약에 cont값이 2보다 작으면
+  //   mslide(cont+1); //1씩 증가하여 함수에 보내준다.
+  // }else{            //그렇지 않으면
+  //   mslide(0);  //0을 함수에 넘겨서 1번 슬라이드가 나오게 함.
+  // }
+
+  moveRight(); //오른쪽으로 이동하는 함수
+});
+
+function moveRight(){
   if(cont<s_total-1){ //만약에 cont값이 2보다 작으면
     mslide(cont+1); //1씩 증가하여 함수에 보내준다.
   }else{            //그렇지 않으면
     mslide(0);  //0을 함수에 넘겨서 1번 슬라이드가 나오게 함.
   }
-});
+}
 
 // 좌, 우측 버튼에 마우스 아웃시 시간을 다시 재생
+// 우측 버튼 마우스 아웃시 타이머 재시작 (중첩 방지를 위해 기존 타이머 클리어)
 e_lbtn.addEventListener('mouseleave', ()=>{
-    Timer2 = setInterval(function(){
-      if(cont>0){ //만약에 cont값이 0보다 크면
-        mslide(cont-1);  //1씩 감소
-      }else{  //그렇지 않으면 
-        mslide(s_total-1); //0으로 나오게 함.
-      }
-    }, 3000);
+    // Timer2 = setInterval(function(){
+    //   if(cont>0){ //만약에 cont값이 0보다 크면
+    //     mslide(cont-1);  //1씩 감소
+    //   }else{  //그렇지 않으면 
+    //     mslide(s_total-1); //0으로 나오게 함.
+    //   }
+    // }, 3000);
+    clearInterval(Timer2);
+    Timer2 = setInterval(moveLeft, 3000);
 });
 
 // 좌, 우측 버튼에 마우스 아웃시 시간을 다시 재생
+// 수정:우측 버튼 마우스 아웃시 타이머 재시작 (중첩 방지를 위해 기존 타이머 클리어)
 e_rbtn.addEventListener('mouseleave', ()=>{
-    Timer2 = setInterval(function(){
-    if(cont<s_total-1){ //만약에 cont가 2보다 작으면
-      mslide(cont+1); //1을 더하여 mslide에 넘김
-    }else{ //그렇지 않으면
-      mslide(0); //0을 넣어서 1번이 나오도록 mslide에 넘김
-    }
-  }, 3000);
+  //   Timer2 = setInterval(function(){
+  //   if(cont<s_total-1){ //만약에 cont가 2보다 작으면
+  //     mslide(cont+1); //1을 더하여 mslide에 넘김
+  //   }else{ //그렇지 않으면
+  //     mslide(0); //0을 넣어서 1번이 나오도록 mslide에 넘김
+  //   }
+  // }, 3000);
+  clearInterval(Timer2);
+  Timer2 = setInterval(moveRight, 3000);
 });
-
 
 //3. 매 시간마다 반복 호출하여 자동으로 움직이게
 function mslide(n){
@@ -246,10 +275,12 @@ function mslide(n){
 }
 
 //3초마다 0, 1, 2값을 mslide에 넘기기
-let Timer2 = setInterval(function(){
-  if(cont<s_total-1){ //만약에 cont가 2보다 작으면
-    mslide(cont+1); //1을 더하여 mslide에 넘김
-  }else{ //그렇지 않으면
-    mslide(0); //0을 넣어서 1번이 나오도록 mslide에 넘김
-  }
-}, 3000);
+// let Timer2 = setInterval(function(){
+//   if(cont<s_total-1){ //만약에 cont가 2보다 작으면
+//     mslide(cont+1); //1을 더하여 mslide에 넘김
+//   }else{ //그렇지 않으면
+//     mslide(0); //0을 넣어서 1번이 나오도록 mslide에 넘김
+//   }
+// }, 3000);
+
+let Timer2 = setInterval(moveRight, 3000);

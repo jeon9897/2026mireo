@@ -110,7 +110,7 @@ article > h2{
   overflow: hidden; /* 넘치는 글자 보이지 않게 */
 }
 #news_con ul > li > a{
-  font-size:18px;
+  font-size:1rem;
   line-height:190%;
 }
 #news_con ul > li > a:hover{
@@ -122,11 +122,11 @@ article > h2{
 
 /* 탭콘텐츠는 가로*세로 고정크기로 만듬 */
 .tcon{
-  width:100%;height:600px;
+  width:100%;height:660px;
   background-image:url('../images/mcon2_7.png');
   background-repeat: no-repeat;
   background-position: center bottom;
-  background-size:85%; /* 수정 */
+  background-size:80%; /* 수정 */
   overflow: hidden;
   padding:20px 1.5%;
 }
@@ -136,13 +136,12 @@ article > h2{
   display:flex;
   position:relative;/* cont의 기준 */
 }
-.tcon ul > li{
-  margin-right:10px;
-}
+.tcon ul > li{margin:0px 0.1rem;}
 .tcon ul > li > a{
+  display:block;
   color:var(--f_color02);
   background-color:var(--bg_color02);
-  padding:10px;
+  padding:12px 5px;
   font-size:1rem;/* 수정 16px = 100% = 1rem */
 }
 .t_on{background:var(--bg_color01) !important;}
@@ -181,7 +180,9 @@ article > h2{
   width:100%;
   margin:0;
 }
-#product > article > h2{text-indent:10px;}
+#product > article > h2{
+  text-indent:10px;
+}
 #product > article > ul{
   display:flex;
   flex-direction: column;
@@ -194,7 +195,7 @@ article > h2{
   margin-bottom:30px;
 }
 #product > article > ul > li img{
-  width:80%;
+  width:60%;
 }
 
 /* 제목, 문단 서식 */
@@ -202,7 +203,7 @@ article > h2{
   height:50px;font-size:1.5rem;
   font-weight: bold;
   padding:16px 0px 10px 0px;
-  text-align:left;
+  text-align:center;
   border-bottom:1px solid #986c02;
 }
 #product > article > ul > li p{
@@ -223,10 +224,15 @@ article > h2{
   position:relative;
 }
 #event .slide{
-  width:100%;
-  height:260px;
+  width:100%;height:38vh;
   position:relative;
 }
+
+@media screen and (max-width:390px){
+  #event .slide{height:40vh;}
+  #event .slide img{width:130%;}
+}
+
 #event .slide .s_wrap{
   width:300%;
   display: flex;
@@ -263,12 +269,15 @@ article > h2{
 
 /* 이벤트 슬라이드 좌, 우버튼 서식 */
 #event .slide i.fas{
-  position:absolute;top:20%;
+  position:absolute;top:23%;
   z-index:100;
   font-size:22px;
   padding:10px 8px;
   border-radius: 50%;
   cursor:pointer;
+  background:#fff;
+  color:#797979;
+  border:2px solid #797979;
 }
 #event .slide i.fa-angle-left{
   left:1%;
@@ -331,7 +340,7 @@ article > h2{
   padding: 10px 0px 5px 20px;
 }
 .girl figcaption p {
-  font-size: 10px;
+  font-size: 0.86rem;
   color: #ffffff;
   padding: 5px 0px 0px 20px;
 }
