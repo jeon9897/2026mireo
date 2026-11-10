@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/* sub.css */
+.title_back{
+  background:url('http://wdesign2010.dothome.co.kr/miero/images/sub_bg1.jpg');
+  background-position:0px -240px;
+  height:250px;
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+.title_back + h2{display:block;}
+main .sub_nav{
+  height:50px;
+  background:#ccc;
+}
+main .sub_nav ul{
+  width:300px;
+  margin:0 auto;
+  display: flex;
+  justify-content: center;
+  padding-top:13px;
+}
+main .sub_nav ul li:first-child a{
+  color:#f36f21;
+}
+main .sub_nav ul li:last-child a{
+  color:#969696;
+}
+main .sub_nav ul li{
+  line-height:22px;
+  padding:0px 10px;
+  border-right:1px solid #969696;
+}
+main .sub_nav ul li:last-child{border:none;}
+
+
+/* 게시판이 가로 가운데 배치 */
+main article{
+  width:1200px;
+  margin:0 auto;
+}
+main article h2{display: none;}

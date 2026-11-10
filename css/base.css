@@ -1,0 +1,54 @@
+@charset "utf-8";
+
+/* 기본서식  base
+1. 글꼴(외부폰트)
+2. 메인컬러, 보조컬러
+3. 글자크기
+4. 링크서식
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+:root{
+  /* 글자크기 변수 */
+  --b_size:12px;
+  --f_size01:14px;
+  --f_size02:16px;
+  --f_size03:17px;
+
+  /* 글자 색상변수 */
+  --f_color01:#333;
+  --f_color02:#fff;
+
+  /* 배경색 변수 */
+  --bg_color01:#f36f21;
+  --bg_color02:#222;
+  --bg_color03:#ffc845;
+
+  /* 화면중앙 변수 */
+  --m_auto:0px auto;
+
+  /* 여백 변수 */
+  --margin_01:50px 0px;
+
+  /* 공통 박스 크기 */
+  --base_width:1200px;
+}
+
+body{
+  font-family: "Noto Sans KR",'맑은 고딕', arial, sans-serif;
+  font-size:var(--b_size);
+  color:var(--f_color01);
+
+  /* 
+  css로 top버튼 클릭시 부드럽게 화면 올라가게 하기
+  scroll-behavior: smooth; 
+  */
+}
+
+/* 링크관련 */
+a{
+  text-decoration: none;
+  color:var(--f_color01);
+  font-size:var(--f_size01);
+}

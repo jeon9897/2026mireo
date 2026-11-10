@@ -1,0 +1,410 @@
+@charset "utf-8";
+main{
+  width:100%;overflow-x:hidden;
+  position:relative;/* 수정 */
+  top:0px;
+}
+#mslide{position:relative;height:94vh;} /* 수정 */
+#mslide h2{display:none;}
+#visual_slide{height:86vh;overflow:hidden;}
+
+/* 각 콘텐츠별 제목 공통 서식 */
+article > h2{ 
+  font-size:32px;
+  font-weight: bold;
+  margin-bottom:20px;
+}
+
+/* 슬라이드 이미지 박스 기준설정 */
+#visual_slide div{
+  position:absolute;transition:0.3s;
+}
+#visual_slide div:first-child{z-index:4;}
+#visual_slide div:nth-child(2){z-index:3;}
+#visual_slide div:nth-child(3){z-index:2;}
+#visual_slide div:last-child{z-index:1;}
+
+#visual_slide div:first-child img{}
+#visual_slide div img{
+  transform: translateX(-140px);/* 수정 */
+  /* width:100%; */
+  height:86vh;
+}
+
+/* 슬라이드 이미지 박스 안에 글자배치속성 */
+#visual_slide div span{
+  position:absolute;
+  font-size:50px;
+  color:var(--f_color02); /*글자 흰색*/
+  font-weight:bold;
+  line-height:60px;
+  text-shadow:0px 0px 4px #ccc;
+  top:250px;left:3%;
+}
+.s_btn{
+  position:absolute;left:3%;top:74%;
+  display:flex;z-index:200;cursor:pointer;
+}
+.s_btn li{
+  background-color:var(--f_color02);
+  margin-right:10px;
+  cursor:pointer;
+  padding:5px 3px;
+}
+.s_btn img{width:50px;}
+
+/* 콘트롤 버튼 서식 */
+#visual_slide .ctrl_btn{
+  position:absolute;
+  right:1.5%;top:35%;
+  z-index:101;
+}
+#visual_slide .ctrl_btn li{
+  width:15px;height:15px;
+  border-radius:50%;
+  background-color:var(--f_color02);
+  margin-bottom:10px;
+  cursor:pointer; /* a요소처럼 마우스 오버시 손가락 모양 나오게 한다. (UX/UI) */
+}
+/* 콘트롤 목록 li태그에 적용할 서식 on */
+.on{background-color:var(--bg_color01) !important;}
+
+/* 2. 뉴스 콘텐츠 영역 서식 */
+#news_con{
+  width:100%; /*  수정 */
+  margin:0px; /*  수정 */
+  display:flex;
+  flex-direction: column;
+  padding:0px 3% 50px 3%; /*  수정 */
+  box-sizing: border-box;
+}
+#news_con .c_title > h2{
+  line-height:36px;
+}
+#news_con .c_title > h2 > span{
+  font-size:20px;
+  display: block;
+}
+#news_con article:first-child{
+  width:94%;
+}
+#news_con article iframe{
+  width:100%;height:320px;
+}
+#news_con article:last-child{
+  width:100%;
+  padding-top:50px;
+}
+
+/* 목록기호 서식 */
+#news_con i.far{
+  color:var(--bg_color01);
+  padding-right:10px;
+  font-size:16px;
+}
+#news_con ul{}
+#news_con ul > li{
+  /* 생략기호 ... */
+  white-space: nowrap; /* 줄바꿈 안하기*/
+  text-overflow: ellipsis;/* 생략기호 나오게 */
+  overflow: hidden; /* 넘치는 글자 보이지 않게 */
+}
+#news_con ul > li > a{
+  font-size:18px;
+  line-height:190%;
+}
+#news_con ul > li > a:hover{
+  text-decoration: underline;
+}
+
+/* 3. 탭콘텐츠 서식 */
+#tab_con{background:#e6e6e6;}
+
+/* 탭콘텐츠는 가로*세로 고정크기로 만듬 */
+.tcon{
+  width:100%;height:600px;
+  background-image:url('../images/mcon2_7.png');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size:85%; /* 수정 */
+  overflow: hidden;
+  padding:20px 1.5%;
+}
+.tcon ul{
+  width:100%;
+  padding-top:30px;
+  display:flex;
+  position:relative;/* cont의 기준 */
+}
+.tcon ul > li{
+  margin-right:10px;
+}
+.tcon ul > li > a{
+  color:var(--f_color02);
+  background-color:var(--bg_color02);
+  padding:10px;
+  font-size:1rem;/* 수정 16px = 100% = 1rem */
+}
+.t_on{background:var(--bg_color01) !important;}
+.tcon ul > li > .cont{
+  position:absolute;
+  width:100%;height:100%;
+  top:80px;left:0px;
+  line-height:200%;
+  padding:10px 5% 10px 1%; /* 수정 */
+  color:var(--bg_color02);
+  display:none;
+  font-size:1rem; /* 수정 */
+  box-sizing: border-box; /* 수정 */
+}
+.tcon ul > li > .cont span{
+  font-size:22px;
+  display:block;
+  font-weight: bold;
+  padding-bottom: 10px;
+}
+.tcon ul > li > .cont img{
+  width:90%;
+}
+
+/* 첫번째 탭콘텐츠 내용 보이게하기 */
+.tcon ul > li:first-child .cont{
+  display:block;
+}
+
+/* 4. 제품소개 */
+#product{
+  padding:50px 0px;
+  background:var(--bg_color03);
+}
+#product > article{
+  width:100%;
+  margin:0;
+}
+#product > article > h2{text-indent:10px;}
+#product > article > ul{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#product > article > ul > li{
+  width:94%;
+  padding:0px 3%;
+  text-align: center;
+  margin-bottom:30px;
+}
+#product > article > ul > li img{
+  width:80%;
+}
+
+/* 제목, 문단 서식 */
+#product > article > ul > li h3{
+  height:50px;font-size:1.5rem;
+  font-weight: bold;
+  padding:16px 0px 10px 0px;
+  text-align:left;
+  border-bottom:1px solid #986c02;
+}
+#product > article > ul > li p{
+  padding-top:10px;
+  text-align: left;
+  font-size:0.875rem;
+  font-weight: bold;
+  line-height:180%;
+  color:#986c02;
+}
+
+/* 5. 이벤트 슬라이드 서식 */
+#event{}
+#event > h2{display:none;}
+#event .title{padding-left:20px;}
+#event > article{
+  width:100%;
+  position:relative;
+}
+#event .slide{
+  width:100%;
+  height:260px;
+  position:relative;
+  border:3px solid #000;
+}
+#event .slide .s_wrap{
+  width:300%;
+  display: flex;
+  position:absolute;
+  left:0px;
+  transition: 0.4s;
+}
+.s_wrap figure{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;/*영역을 벗어난 콘텐츠는 다음줄로 넘기기 */
+}
+.s_wrap figure img{width:100%;}
+.s_wrap figure figcaption{
+  width:100%;
+  padding:30px 5%;
+  box-sizing: border-box;
+}
+.s_wrap figure figcaption span{
+  background:#e9e8e8;
+  padding:4px 8px;
+  font-size:0.9rem;
+}
+.s_wrap figure figcaption p{
+  line-height:30px;
+  font-size:1.2rem;
+  font-weight:500;
+  padding-top:10px;
+}
+.s_wrap figure figcaption .date{
+  font-size: 1rem;
+  font-weight:normal;
+}
+
+/* 이벤트 슬라이드 좌, 우버튼 서식 */
+#event .slide i.fas{
+  position:absolute;top:20%;
+  z-index:100;
+  font-size:22px;
+  padding:10px 8px;
+  border-radius: 50%;
+  cursor:pointer;
+}
+#event .slide i.fa-angle-left{
+  left:1%;
+}
+#event .slide i.fa-angle-right{
+  right:1%;
+}
+
+/* 콘텐츠 공통 레이아웃 */
+#tab_con, #product, #event{
+  padding:60px 0px;
+}
+
+/* 미에로 화이버 갤러리 서식 */
+#gallery{
+		background:#f36f21;
+		padding:60px 0px;
+	}
+#gallery article h2{
+  font-size:34px;
+  font-weight:bold;
+  padding-bottom:20px;
+  color:#fff;
+}
+	
+#gallery article{
+  width:100%;
+}
+.girl {
+  width: 88%;
+  margin:var(--m_auto);
+  display: grid;
+  grid-template-rows: 270px;
+  padding: 20px;grid-gap: 20px;
+  grid-template-areas:
+    "g01"
+    "g02"
+    "g03"
+    "g04"
+    "g05"
+    "g06"
+    "g07"
+    "g08";
+}
+.girl figure {
+  overflow: hidden;
+  position:relative;
+}
+.girl figcaption {
+  height: 80px;
+  background-color: #111111d1;
+  position: absolute;
+  width:100%;bottom:0px;
+  transition: 0.5s;
+}
+.girl figcaption h6 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f36f21;
+  padding: 10px 0px 5px 20px;
+}
+.girl figcaption p {
+  font-size: 10px;
+  color: #ffffff;
+  padding: 5px 0px 0px 20px;
+}
+.girl figcaption span {
+  border: 1px solid #ffffff;
+  font-size: 12px;
+  color: #ffffff;
+  padding: 5px;
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+}
+.girl img {
+  width: 100%;
+}
+.girl figure:first-child {
+  grid-area: g01;
+}
+.girl figure:nth-child(2){
+  grid-area: g02;
+}
+.girl figure:nth-child(3) {
+  grid-area: g03;
+}
+.girl figure:nth-child(4) {
+  grid-area: g04;
+}
+.girl figure:nth-child(5) {
+  grid-area: g05;
+}
+.girl figure:nth-child(6) {
+  grid-area: g06;
+}
+.girl figure:nth-child(7) {
+  grid-area: g07;
+}
+.girl figure:last-child {
+  grid-area: g08;
+}
+
+/* 더보기 버튼 서식 */
+.m_box{
+  text-align:center;
+  padding-top:10px;
+}
+.m_box > a{
+  background:#fff;
+  font-size:var(--f-size01);
+  padding:6px 20px;
+  border-radius:5px;
+}
+
+/* 갤러리 추가서식 */
+#list{
+  width:1200px;
+  margin:0px auto;
+  text-align:center;
+  overflow:auto;
+}
+#list ul{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+#list li{padding:15px 0px;}
+#list li img{width:100%;display:block;float:left;}
+
+
+@media screen and (max-width:768px){
+  /* 여백, 높이 설정하기 */
+}
+
+@media screen and (max-width:375px) {
+  .tcon ul{}
+}
