@@ -253,8 +253,3 @@ let Timer2 = setInterval(function(){
     mslide(0); //0을 넣어서 1번이 나오도록 mslide에 넘김
   }
 }, 3000);
-
-
-
-// 4. 윈도우 스크롤 값을 사용하여 top버튼 보이고/숨기기(common.js에 작성)
-

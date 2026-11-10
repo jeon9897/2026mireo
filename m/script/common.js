@@ -70,3 +70,15 @@ mnu.forEach(function(item){
     }
   });
 });
+
+const t_btn = document.querySelector('.top_btn');
+// 4. 윈도우 스크롤 값을 사용하여 top버튼 보이고/숨기기(common.js에 작성)
+window.addEventListener('scroll', ()=>{
+  let ws = window.scrollY;
+  console.log(ws);
+  if(ws>=800){
+    t_btn.style.display='block';
+  }else{
+    t_btn.style.display='none';
+  }
+});
